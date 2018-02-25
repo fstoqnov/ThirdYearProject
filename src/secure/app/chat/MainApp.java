@@ -8,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -17,6 +19,7 @@ import secure.app.chat.view.KeyGeneratorController;
 import secure.app.chat.view.NewMessageController;
 import secure.app.chat.view.SecurePanelController;
 import secure.app.chat.view.UserListController;
+import secure.app.chat.view.LoginController;
 import secure.app.chat.model.Message;
 import secure.app.chat.model.User;
 
@@ -53,14 +56,33 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("University of Southampton Secure Messaging");
         primaryStage.setResizable(false);
         
-        initRootLayout();
+        initLoginRootLayout();
 
-        showPersonOverview();
+        showLoginForm();
     }
 
     /**
      * Initializes the root layout.
      */
+    
+    public void initLoginRootLayout() {
+    	try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/LoginRootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
+
+            // Show the scene containing the root layout.
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+           
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void initRootLayout() {
         try {
             // Load root layout from fxml file.
@@ -106,7 +128,7 @@ public class MainApp extends Application {
     /**
      * Shows the person overview inside the root layout.
      */
-    public void showPersonOverview() {
+    public void showSecurePanel() {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
@@ -119,6 +141,25 @@ public class MainApp extends Application {
             
             // Give the controller access to the main app.
             SecurePanelController controller = loader.getController();
+            controller.setMainApp(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void showLoginForm() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/Login.fxml"));
+            AnchorPane loginForm = (AnchorPane) loader.load();
+
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(loginForm);
+            
+            // Give the controller access to the main app.
+            LoginController controller = loader.getController();
             controller.setMainApp(this);
             
         } catch (IOException e) {
@@ -240,6 +281,23 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public void showLoginMessage(boolean f) {
+    	if(f == false) {
+    		Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(this.getPrimaryStage());
+            alert.setTitle("Not a valid acc");
+            alert.setHeaderText("No valid University acc entered");
+            alert.setContentText("Please enter a valid Univeresity acc before loging in");
+
+            alert.showAndWait();
+    	} else {
+            
+            
+    		initRootLayout();
+    		showSecurePanel();
+    	}
     }
     
     /**
