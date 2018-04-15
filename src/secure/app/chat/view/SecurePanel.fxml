@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="secure.app.chat.view.SecurePanelController">
+   <children>
+      <SplitPane dividerPositions="0.26732939279957013" prefHeight="435.0" prefWidth="797.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="330.0" prefWidth="195.0">
+               <children>
+                  <Button fx:id="newMessage" layoutX="26.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleNewMessage" prefHeight="58.0" prefWidth="158.0" text="New Message">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Line endX="115.0" layoutX="97.0" layoutY="104.0" startX="-100.0" />
+                  <Button fx:id="inbox" layoutX="26.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleInbox" prefHeight="58.0" prefWidth="158.0" text="Inbox">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="sent" layoutX="25.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleSent" prefHeight="58.0" prefWidth="158.0" text="Sent">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="userList" layoutX="26.0" layoutY="352.0" mnemonicParsing="false" onAction="#handleUserList" prefHeight="58.0" prefWidth="158.0" text="List of Users">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Line endX="115.0" layoutX="97.0" layoutY="323.0" startX="-100.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="382.0" prefWidth="564.0">
+               <children>
+                  <Label layoutX="112.0" layoutY="14.0" prefHeight="58.0" prefWidth="317.0" text="University of Southampton">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="126.0" layoutY="72.0" prefHeight="50.0" prefWidth="290.0" text="Secure Messaging Application">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+                  <Line endX="438.0" layoutX="112.0" layoutY="122.0" startX="-113.0" strokeWidth="2.0" />
+                  <Label layoutX="41.0" layoutY="123.0" prefHeight="50.0" prefWidth="459.0" text="Welcome to the University of Southampton secure messaging Application">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="87.0" layoutY="324.0" prefHeight="31.0" prefWidth="376.0" text="Please find the intended recipient located in the list of users">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="107.0" layoutY="356.0" prefHeight="31.0" prefWidth="335.0" text="and use their University of Southampton e-mail ID to">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="197.0" layoutY="388.0" prefHeight="31.0" prefWidth="147.0" text="send a secure message">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="119.0" fitWidth="376.0" layoutX="104.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Desktop/university_southampton_white_on_blue_0-1140x397.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
